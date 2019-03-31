@@ -17,6 +17,17 @@ import warnings
 warnings.warn = warn
 
 class TreeMLP(object):
+	"""Constructor for gated-recurrent unit.
+
+    @param input_count: integer
+                        number of input dimensions
+    @param output_count: integer
+                        number of binary outputs 
+    @param hidden_sizes: list of integers
+                        list of layer sizes in the perceptron.
+    @return predict: function
+                     used to predict y_hat
+    """
     def __init__(self, in_count, out_count, hidden_sizes, strength=0.01):
         self.mlp = MLP(in_count, hidden_sizes, out_count)
         self.sur = surrogate(self.mlp.num_weights, 1)
